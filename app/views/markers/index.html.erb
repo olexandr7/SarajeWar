@@ -1,42 +1,47 @@
-<!-- Table block -->
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div id="map">
 
 
-<div class="btn-group">
-    <%= link_to '', new_marker_path, class:"btn btn-lg btn-success glyphicon glyphicon-plus", title: 'Add marker', 'data-toggle' => 'tooltip', 'data-placement' => 'right'%>
-  </div>
+  <script>
+// Map definition
+//-----------------------------------------------------------------------------------------
+var map = L.map('map', 'zoomControl').setView([43.8562586, 18.4130763], 14),
+leafletView = new PruneClusterForLeaflet();
 
 
-<table>
-  <!-- Table header ........................................... -->
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Lat</th>
-      <th>Lng</th>
-      <th>Year</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></tr>
-  </thead>
-  <!--  ....................................................... -->
-  <!-- Table content .......................................... -->
-  <tbody>
-    <% @list_markers.each do |marker| %>
-      <tr>
-        <td><%= marker.id %></td>
-        <td><%= marker.lat %></td>
-        <td><%= marker.lng %></td>
-        <td><%= marker.year %></td>
-        <td><%= link_to 'Show', marker_path(marker),class:"btn btn-sm btn-info"%></td>
-        <td><%= link_to 'Edit', edit_marker_path(marker),class:"btn btn-sm btn-warning"%></td>
-        <td><%= link_to 'Delete', marker_path(marker),class:"btn btn-sm btn-danger",
-                                  method: :delete,
-                                  data: {confirm: 'Are you sure ?'} %></td>
-      </tr>
-    <% end %>
-  </tbody>
-  <!--  ....................................................... -->
-</table>
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+
+L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+	subdomains: 'abcd',
+	maxZoom: 19
+}).addTo(map);
+
+
+L.easyButton( 'fa-list', function(){
+  //alert('you just clicked a font awesome icon');
+  window.open("/all");
+}).addTo(map);
+
+
+
+jQuery.getJSON("/markers.json", {}, function(res){
+  res.forEach(function (item) {
+    leafletView.RegisterMarker(new PruneCluster.Marker(item[1], item[2], {id: item[0]}));
+  });
+  map.addLayer(leafletView);
+})
+
+leafletView.PrepareLeafletMarker = function (marker, data) {
+  marker.on('click', function () {
+    jQuery.ajax({
+      url: "/markers/"+data.id
+    }).done(function (res) {
+      marker.bindPopup(res);
+      marker.openPopup();
+    })
+  })
+}
+
+
+
+</script>

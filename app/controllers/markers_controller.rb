@@ -2,13 +2,8 @@ class MarkersController < ApplicationController
   before_action :set_marker, only: [:show]
 
 
+
   def index
-    #@list_markers = Marker.all.paginate :page => params[:page], :per_page => 10
-    @list_markers = Marker.all #used to export all entries (not just 10 paginated on page) into other formats
-  end
-
-
-  def map
     respond_to do |format|
   format.html
   format.json {
@@ -19,9 +14,42 @@ end
   end
 
 
-  def show
-        render "show", layout: false
-  end
+def show
+    render "show", layout: false
+end
+
+
+  def display
+    @list_markers = Marker.all
+    end
+
+def new
+    @marker =Marker.new
+end
+
+
+
+def create
+  @marker = Marker.new(marker_params)
+  @marker.save
+
+  #@redirect_to @marker
+render action: "index"
+end
+
+
+  private
+    def set_marker
+      @marker = Marker.find(params[:id])
+    end
+
+
+
+    private
+    def marker_params
+      params.require(:marker).permit(:lat, :lng, :year)
+    end
+
 
 
 
@@ -33,29 +61,10 @@ end
     end
 
 
-def create
-  @marker = Marker.new(marker_params)
-
-   if  @marker.save
-     redirect_to @marker, notice: 'Marker was successfully created.'
-   else
-     render 'new'
-   end
-end
-
-
-def edit
-@marker = Marker.find(params[:id])
-end
 
 
 
 
-
-private
-  def set_marker
-    @marker = Marker.find(params[:id])
-  end
 
 
 

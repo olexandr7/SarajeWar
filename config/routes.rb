@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
 
-  root to: "markers#map"
+  root to: "markers#index"
   resources :markers#, only: [:index, :show]
 
-  #get "/admin/show" => "welcome#info"
-
-
-
+  get 'all', to: 'markers#display'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

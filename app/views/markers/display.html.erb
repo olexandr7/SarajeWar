@@ -1,0 +1,35 @@
+<table>
+  <!-- Table header ........................................... -->
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Lat</th>
+      <th>Lng</th>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></tr>
+  </thead>
+  <!--  ....................................................... -->
+  <!-- Table content .......................................... -->
+  <tbody>
+    <% @list_markers.each do |marker| %>
+      <tr>
+        <td><%= marker.id %></td>
+        <td><%= marker.lat %></td>
+        <td><%= marker.lng %></td>
+        <td><%= marker.year %></td>
+      </tr>
+    <% end %>
+
+
+  </tbody>
+  <!--  ....................................................... -->
+</table>
+
+<%= link_to 'New Marker', new_marker_path %>
+
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
