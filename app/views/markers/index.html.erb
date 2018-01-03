@@ -17,10 +17,21 @@ L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x
 }).addTo(map);
 
 
-L.easyButton( 'fa-map-marker', function(){
+L.easyButton( 'fa-table', function(){
   //alert('you just clicked a font awesome icon');
   window.open("/all");
 }).addTo(map);
+
+
+L.easyButton( 'fa-map-marker', function(){
+  //alert('you just clicked a font awesome icon');
+map.setView([43.8562586, 18.4130763], 14);
+}).addTo(map);
+
+
+
+
+
 
 
 
