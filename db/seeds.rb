@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Marker.create!(lat: 34.33, lng: 33.45, name: 'Hospital1',avatar: '',website: 'www.google.ba',address: 'Sarajevo',year: 1992, about: 'Kosevo hospital');
+Marker.create!(lat: 34.33, lng: 33.45, name: 'Hospital1',avatar: '',website: 'www.google.ba',address: 'Sarajevo',year: 1992,about: 'Kosevo hospital');
 Marker.create!(lat: 34.35, lng: 33.45, name: 'Hospital2',avatar: '',website: 'www.google.ba',address: 'Sarajevo',year: 1992,about: 'Kosevo hospital');
 Marker.create!(lat: 35.33, lng: 33.45, name: 'Hospital3',avatar: '',website: 'www.google.ba',address: 'Sarajevo',year: 1992,about: 'Kosevo hospital');
 Marker.create!(lat: 38.33, lng: 33.45, name: 'Hospital4',avatar: '',website: 'www.google.ba',address: 'Sarajevo',year: 1992,about: 'Kosevo hospital');

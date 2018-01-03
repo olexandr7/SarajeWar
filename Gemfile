@@ -47,6 +47,19 @@ gem 'active_model_serializers', '>= 0.9.2'
 gem "awesome_print"
 
 
+
+#Used for Bootstrap - clean frontend
+gem 'bootstrap-sass', '3.3.7'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+
+#Used for page pagination - 2 gems needed
+gem 'will_paginate', '3.1.5'
+gem 'bootstrap-will_paginate', '1.0.0'
+
+
+
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
