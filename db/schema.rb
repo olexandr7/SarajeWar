@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20180103153536) do
     t.string   "website"
     t.string   "address"
     t.integer  "year"
+    t.text     "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

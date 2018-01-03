@@ -8,6 +8,7 @@ class CreateMarkers < ActiveRecord::Migration[5.0]
       t.string :website
       t.string :address
       t.integer :year
+      t.text :about
 
       t.timestamps
     end
