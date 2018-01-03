@@ -30,11 +30,14 @@ end
 
 
 def create
-  @marker = Marker.new(marker_params)
-  @marker.save
 
-  #@redirect_to @marker
-render action: "index"
+
+@marker = Marker.new(marker_params)
+ if  @marker.save
+   render action: "index", notice: 'Marker was successfully saved.'
+ else
+   render 'new'
+ end
 end
 
 
@@ -47,7 +50,7 @@ end
 
     private
     def marker_params
-      params.permit(:lat, :lng, :year)
+      params.permit(:lat, :lng, :year, :name, :avatar, :about, :website, :address)
     end
 
 
