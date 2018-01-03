@@ -4,12 +4,39 @@
   <script>
 // Map definition
 //-----------------------------------------------------------------------------------------
-var map = L.map('map', 'zoomControl').setView([41.311081, 69.240562], 5);
+var map = L.map('map', 'zoomControl').setView([43.8562586, 18.4130763], 14),
+leafletView = new PruneClusterForLeaflet();
+
+
 L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 	subdomains: 'abcd',
 	maxZoom: 19
 }).addTo(map);
+
+
+jQuery.getJSON("/markers.json", {}, function(res){
+  res.forEach(function (item) {
+    leafletView.RegisterMarker(new PruneCluster.Marker(item[1], item[2], {id: item[0]}));
+  });
+  map.addLayer(leafletView);
+})
+
+
+leafletView.PrepareLeafletMarker = function (marker, data) {
+  marker.on('click', function () {
+    jQuery.ajax({
+      url: "/markers/"+data.id
+    }).done(function (res) {
+      if (marker.getPopup()) {
+        marker.setPopupContent(res)
+      } else {
+        marker.bindPopup(res);
+        marker.openPopup();
+      }
+    })
+  })
+}
 
 
 
