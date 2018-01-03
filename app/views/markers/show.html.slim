@@ -1,4 +1,18 @@
 h1
   | #{@marker.name}
 .popup__address
-  |  #{@marker.address}
+  | #{@marker.address}
+  br
+  | #{@marker.year}
+
+.nowrap
+  .popup__avatar
+    img src="#{@marker.avatar}" width="180" height="120"
+      div
+    .popup__contact
+      b Link:
+      div
+        a href=" #{@marker.website}" target="_blank"
+          | #{@marker.website}
+p
+  | #{@marker.about}

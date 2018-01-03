@@ -1,15 +1,39 @@
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+
+
+<div class="btn-group btn-group-lg">
+         <%= link_to 'Back to map',markers_path, class:"btn btn-lg btn-info", title: 'Add entry'%>
+        <%= link_to 'Add marker', new_marker_path, class:"btn btn-lg btn-primary", title: 'Add entry'%>
+</div>
+
+
+
+
+      </div>
+    </div>
+  </nav>
+
+
+
 <table>
-  <!-- Table header ........................................... -->
+<table class = "table table-bordered table-striped table-hover .table-responsive">
   <thead>
     <tr>
       <th>ID</th>
       <th>Lat</th>
       <th>Lng</th>
+      <th>Name</th>
+      <th>Address</th>
       <th>Year</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></tr>
+      <th>Description</th>
+      <tr></tr>
+      <tr></tr>
+      <tr></th>
+      <tr></th>
+      <tr></th>
+      <tr></tr>
   </thead>
   <!--  ....................................................... -->
   <!-- Table content .......................................... -->
@@ -19,7 +43,10 @@
         <td><%= marker.id %></td>
         <td><%= marker.lat %></td>
         <td><%= marker.lng %></td>
+        <td><%= marker.name %></td>
+        <td><%= marker.address %></td>
         <td><%= marker.year %></td>
+        <td><%= marker.about %></td>
       </tr>
     <% end %>
 

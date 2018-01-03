@@ -47,7 +47,7 @@ end
 
     private
     def marker_params
-      params.require(:marker).permit(:lat, :lng, :year)
+      params.permit(:lat, :lng, :year)
     end
 
 

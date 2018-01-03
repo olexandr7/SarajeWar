@@ -52,6 +52,7 @@ gem "awesome_print"
 gem 'bootstrap-sass', '3.3.7'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 
+
 #Used for page pagination - 2 gems needed
 gem 'will_paginate', '3.1.5'
 gem 'bootstrap-will_paginate', '1.0.0'
