@@ -1,1 +1,44 @@
-<h1> create <h1>
+%= form_for :marker, url:markers_path do |f| %>
+
+<!--Display of error messages-->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<% if @marker.errors.any? %>
+   <div id="error_explanation">
+     <h2>
+       <%= pluralize(@marker.errors.count, "error") %> prohibited
+       this marker from being saved:
+     </h2>
+     <ul>
+       <% @marker.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
+     </ul>
+   </div>
+ <% end %>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!--New page layout-->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+  <%=f.label :LAT%>
+  <%=f.text_area :lat%>
+
+  <%=f.label :LNG%>
+  <%=f.text_area :lng%>
+
+  <%=f.label :Year%>
+  <%=f.text_field :year%>
+
+  <%= f.submit "Create", class: "btn  btn-primary glyphicon glyphicon-ok" %>
+  <br>
+  <br>
+  <center><%= link_to '', markers_path, class:"btn btn-sm btn-warning glyphicon glyphicon-arrow-left",
+    title: 'Back to markers', 'data-toggle' => 'tooltip', 'data-placement' => 'right'%></center>
+
+  <% end %>
+
+  </div>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->

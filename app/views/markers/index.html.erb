@@ -1,1 +1,42 @@
-<h1> index <h1>
+<!-- Table block -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+
+<div class="btn-group">
+    <%= link_to '', new_marker_path, class:"btn btn-lg btn-success glyphicon glyphicon-plus", title: 'Add marker', 'data-toggle' => 'tooltip', 'data-placement' => 'right'%>
+  </div>
+
+
+<table>
+  <!-- Table header ........................................... -->
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Lat</th>
+      <th>Lng</th>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></tr>
+  </thead>
+  <!--  ....................................................... -->
+  <!-- Table content .......................................... -->
+  <tbody>
+    <% @list_markers.each do |marker| %>
+      <tr>
+        <td><%= marker.id %></td>
+        <td><%= marker.lat %></td>
+        <td><%= marker.lng %></td>
+        <td><%= marker.year %></td>
+        <td><%= link_to 'Show', marker_path(marker),class:"btn btn-sm btn-info"%></td>
+        <td><%= link_to 'Edit', edit_marker_path(marker),class:"btn btn-sm btn-warning"%></td>
+        <td><%= link_to 'Delete', marker_path(marker),class:"btn btn-sm btn-danger",
+                                  method: :delete,
+                                  data: {confirm: 'Are you sure ?'} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <!--  ....................................................... -->
+</table>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
