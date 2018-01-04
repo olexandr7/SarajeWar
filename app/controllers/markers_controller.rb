@@ -20,8 +20,11 @@ end
 
 
   def display
-    @list_markers = Marker.all
+    #@list_markers = Marker.all
+    @list_markers = Marker.all.paginate :page => params[:page], :per_page => 10
     end
+
+
 
 def new
     @marker =Marker.new

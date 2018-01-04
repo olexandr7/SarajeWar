@@ -4,8 +4,8 @@
 
 
 <div class="btn-group btn-group-lg">
-         <%= link_to 'Back to map',markers_path, class:"btn btn-lg btn-info", title: 'Add entry'%>
-        <%= link_to 'Add marker', new_marker_path, class:"btn btn-lg btn-primary", title: 'Add entry'%>
+         <%= link_to 'Back to map',markers_path, class:"btn btn-lg btn-info", title: 'Back'%>
+        <%= link_to 'Add marker', new_marker_path, class:"btn btn-lg btn-primary", title: 'Add'%>
 </div>
 
 
@@ -56,6 +56,8 @@
 </table>
 
 
-
-
+<!--  Data pagination -->
+<div class="center-div">
+<%= will_paginate @list_markers%>
+</div>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
