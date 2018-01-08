@@ -22,3 +22,11 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+* OSM Geocoder
+* LeafletJS
+* PruneCluster
+* Leaflet easyButton
+* FontAwesome
+* Bootstrap

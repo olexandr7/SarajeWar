@@ -10,11 +10,18 @@ leafletView = new PruneClusterForLeaflet();
 
 
 
+//'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
+
 L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 	subdomains: 'abcd',
 	maxZoom: 19
 }).addTo(map);
+
+
+var corner1 = L.latLng(43.942483, 18.095512);
+var corner2 = L.latLng(43.769684, 18.619423);
+var SJJbounds = L.latLngBounds(corner1, corner2);
 
 
 L.easyButton( 'fa-table', function(){
@@ -29,10 +36,7 @@ map.setView([43.8562586, 18.4130763], 14);
 }).addTo(map);
 
 
-
-
-
-
+;
 
 
 jQuery.getJSON("/markers.json", {}, function(res){
@@ -42,6 +46,23 @@ jQuery.getJSON("/markers.json", {}, function(res){
   map.addLayer(leafletView);
 })
 
+
+
+
+
+
+var osmGeocoder = new L.Control.OSMGeocoder({
+            collapsed: false,
+            position: 'topright',
+            text: 'Find!',
+            bounds: SJJbounds,
+            placeholder: 'please enter the location'
+   });
+map.addControl(osmGeocoder);
+
+
+
+
 leafletView.PrepareLeafletMarker = function (marker, data) {
   marker.on('click', function () {
     jQuery.ajax({
@@ -49,9 +70,15 @@ leafletView.PrepareLeafletMarker = function (marker, data) {
     }).done(function (res) {
       marker.bindPopup(res);
       marker.openPopup();
+
     })
   })
 }
+
+
+
+
+
 
 
 
