@@ -14,11 +14,6 @@ end
   end
 
 
-def show
-    render "show", layout: false
-end
-
-
   def display
     #@list_markers = Marker.all
     @list_markers = Marker.all.paginate :page => params[:page], :per_page => 10
@@ -31,16 +26,44 @@ def new
 end
 
 
-
 def create
-
-
-@marker = Marker.new(marker_params)
+@marker = Marker.new(add_params)
  if  @marker.save
    render action: "index", notice: 'Marker was successfully saved.'
  else
    render 'new'
  end
+end
+
+
+def edit
+   @marker = Marker.find(params[:id])
+ end
+
+
+
+ def update
+   @marker = Marker.find(params[:id])
+
+   if @marker.update(edit_params)
+     redirect_to "/all"
+          #render :action => :show
+   else
+     render :action => :edit
+   end
+ end
+
+
+ def destroy
+   @marker = Marker.find(params[:id])
+   @marker.destroy
+   redirect_to markers_path
+ end
+
+
+
+def show
+    render "show", layout: false
 end
 
 
@@ -51,20 +74,19 @@ end
 
 
 
-    private
-    def marker_params
-      params.permit(:lat, :lng, :year, :name, :avatar, :about, :website, :address)
+  private
+
+    def add_params
+        params.permit(:lat, :lng, :year, :name, :avatar, :about, :website, :address)
+    end
+
+    def edit_params
+      params.require(:marker).permit!
     end
 
 
 
 
-
-    def destroy
-      @marker = Marker.find(params[:id])
-      @marker.destroy
-      redirect_to markers_path
-    end
 
 
 

@@ -28,12 +28,20 @@
       <th>Address</th>
       <th>Year</th>
       <th>Description</th>
+      <th></th>
+      <th></th>
+
+
+
       <tr></tr>
       <tr></tr>
       <tr></th>
       <tr></th>
       <tr></th>
       <tr></tr>
+        <tr></tr>
+        <tr></tr>
+
   </thead>
   <!--  ....................................................... -->
   <!-- Table content .......................................... -->
@@ -47,6 +55,16 @@
         <td><%= marker.address %></td>
         <td><%= marker.year %></td>
         <td><%= marker.about %></td>
+
+        <td><%= link_to 'Edit', edit_marker_path(marker),class:"btn btn-sm btn-warning"%></td>
+        <td><%= link_to 'Delete', marker_path(marker),class:"btn btn-sm btn-danger",
+                                  method: :delete,
+                                  data: {confirm: 'Are you sure ?'} %></td>
+
+
+
+
+
       </tr>
     <% end %>
 

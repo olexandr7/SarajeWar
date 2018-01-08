@@ -1,4 +1,6 @@
-<h1>Edit Marker</h1>
+<h2>
+  <center>Edit Marker</center>
+</h2>
 
   <%= form_for(@marker) do |f| %>
 
@@ -20,27 +22,99 @@
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
 <!-- Edit page layout-->
+
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="center jumbotron">
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
 
-    <div align="right">
-    <%= link_to '', markers_path, class:"btn btn-md btn-warning glyphicon glyphicon-circle-arrow-left",
-    title: 'Back to markers', 'data-toggle' => 'tooltip', 'data-placement' => 'right'%>
+<form>
+    <div class="field form-group">
+    <%=f.label :Latitude , class: 'col-sm-2 control-label'%>
+    <div class="col-sm-10">
+    <%=f.text_field :lat,  class: 'form-control' %>
     </div>
+    </div>
+    <br>
 
-    <%=f.label :LAT%>
-    <%=f.text_area :lat%>
-    <%=f.label :LNG%>
-    <%=f.text_area :lng%>
-    <%=f.label :YEAR%>
-    <%=f.text_field :year%>
+    <div class="field form-group">
+    <%=f.label :Longitude , class: 'col-sm-2 control-label'%>
+    <div class="col-sm-10">
+    <%=f.text_field :lng,  class: 'form-control' %>
+    </div>
+    </div>
+    <br>
+
+    <div class="field form-group">
+    <%=f.label :Name , class: 'col-sm-2 control-label'%>
+    <div class="col-sm-10">
+    <%=f.text_field :name,  class: 'form-control' %>
+    </div>
+    </div>
+    <br>
 
 
-    <%= f.submit "Edit", class: "btn btn-primary" %>
+    <div class="field form-group">
+    <%=f.label :ImageLink , class: 'col-sm-2 control-label'%>
+    <div class="col-sm-10">
+    <%=f.text_field :avatar,  class: 'form-control' %>
+    </div>
+    </div>
+    <br>
+
+
+    <div class="field form-group">
+    <%=f.label :Website , class: 'col-sm-2 control-label'%>
+    <div class="col-sm-10">
+    <%=f.text_field :website,  class: 'form-control' %>
+    </div>
+    </div>
+    <br>
+
+
+    <div class="field form-group">
+    <%=f.label :Address, class: 'col-sm-2 control-label'%>
+    <div class="col-sm-10">
+    <%=f.text_field :address,  class: 'form-control' %>
+    </div>
+    </div>
+    <br>
+
+    <div class="field form-group">
+    <%=f.label :Description , class: 'col-sm-2 control-label'%>
+    <div class="col-sm-10">
+    <%=f.text_area :about,  class: 'form-control' %>
+    </div>
+    </div>
+    <br>
+
+    <div class="field form-group">
+    <%=f.label :Year , class: 'col-sm-2 control-label'%>
+    <div class="col-sm-10">
+    <%=f.text_field :year,  class: 'form-control' %>
+    </div>
+    </div>
+    <br>
+    <br>
+
+
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-primary btn-lg" type="submit">Edit</button>
+
+                <%= link_to 'Back', '/all', class:"btn btn-lg btn-warning",
+                  title: 'Back to markers', 'data-toggle' => 'tooltip', 'data-placement' => 'right'%>
+            </div>
+
+
 
     <% end %>
-
   </div>
+</div>
+
+
+
+
+
+</form>
 </div>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->

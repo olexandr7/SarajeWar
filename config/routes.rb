@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root to: "markers#index"
-  resources :markers#, only: [:index, :show]
+  resources :markers
 
   get 'all', to: 'markers#display'
 
