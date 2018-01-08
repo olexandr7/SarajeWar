@@ -57,7 +57,8 @@ def edit
  def destroy
    @marker = Marker.find(params[:id])
    @marker.destroy
-   redirect_to markers_path
+   #redirect_to markers_path
+   redirect_to "/all"
  end
 
 
