@@ -29,7 +29,7 @@ end
 def create
 @marker = Marker.new(add_params)
  if  @marker.save
-   render action: "index", notice: 'Marker was successfully saved.'
+    redirect_to "/all", notice: 'Marker was successfully saved.'
  else
    render 'new'
  end
