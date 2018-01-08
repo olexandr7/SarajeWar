@@ -1,7 +1,7 @@
 class MarkersController < ApplicationController
   before_action :set_marker, only: [:show]
   #http_basic_authenticate_with name: "admin", password: "secret", only: [:new, :edit, :destroy]
-   http_basic_authenticate_with name: "dhh", password: "secret", except: :index
+   http_basic_authenticate_with name: "admin", password: "secret", except: [:index, :all,:show]
 
   def index
     respond_to do |format|
