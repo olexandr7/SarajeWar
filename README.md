@@ -2,6 +2,7 @@
 
 Interactive Sarajevo Siege Map.
 Utilizes:
+* CartoDB tiles
 * Leaflet JS
 * PruneCluster
 * Leaflet.EasyButton
