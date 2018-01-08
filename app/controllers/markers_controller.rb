@@ -14,11 +14,6 @@ end
   end
 
 
-  def show
-      render "show", layout: false
-  end
-
-
   def display
     #@list_markers = Marker.all
     @list_markers = Marker.all.paginate :page => params[:page], :per_page => 10
@@ -68,7 +63,9 @@ def edit
 
 
 
-
+def show
+    render "show", layout: false
+end
 
 
   private
