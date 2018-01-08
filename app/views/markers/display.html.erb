@@ -26,8 +26,8 @@
       <th>Lng</th>
       <th>Name</th>
       <th>Address</th>
-      <th>Year</th>
       <th>Description</th>
+      <th>Year</th>
       <th></th>
       <th></th>
 
@@ -53,18 +53,13 @@
         <td><%= marker.lng %></td>
         <td><%= marker.name %></td>
         <td><%= marker.address %></td>
-        <td><%= marker.year %></td>
         <td><%= marker.about %></td>
-
+        <td><%= marker.year %></td>
         <td><%= link_to 'Edit', edit_marker_path(marker),class:"btn btn-sm btn-warning"%></td>
+
         <td><%= link_to 'Delete', marker_path(marker),class:"btn btn-sm btn-danger",
                                   method: :delete,
                                   data: {confirm: 'Are you sure ?'} %></td>
-
-
-
-
-
       </tr>
     <% end %>
 
